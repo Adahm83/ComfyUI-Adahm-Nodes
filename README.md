@@ -1,10 +1,11 @@
 🤗 [HuggingFace](https://huggingface.co/Adahm) | <img src="https://avatars.githubusercontent.com/u/117393426?s=60&v=4" alt="CivitAI logo" width="20" height="20" align="middle"> [CivitAI](https://civitai.com/user/Adahm)
 
+
 # ComfyUI-Adahm-Nodes
 
 A ComfyUI custom-node pack containing Adahm utility nodes and frontend helpers.
 
-## Nodes
+## What's included (Node List)
 
 ### Adahm Clear Previews on Start
 
@@ -14,15 +15,15 @@ Clears generated image previews when a workflow execution starts. The node
 keeps the existing workflow-compatible behavior and exposes an enabled/
 disabled switch.
 
-![Node previews](docs/images/node-previews-node.png)
+<img src="docs/images/node-previews-node.png" alt="Resolution Selector example" width="30%">
 
 * When __enabled__ - image previews are cleared at the beginning of execution of the workflow<br>
 * When __disabled__ - standard ComfyUI behavior, previews stay until execution is finished, then updated with new image
 
-I use it in my workflow where I have multiple image preview windows stacked
+*I use it in my workflow where I have multiple image preview windows stacked
 next to each other while testing different samplers or small prompt changes.
 Every time I generate a new seed or run the workflow, the previous previews
-are cleared before the new images are generated.
+are cleared before the new images are generated.*
 
 ### Adahm Resolution Selector
 
@@ -38,7 +39,7 @@ explicit graph value rather than inferred from rounded dimensions.
 
 Example:
 
-<img src="docs/images/node-resolution-example.png" alt="Resolution Selector example" width="50%">
+<img src="docs/images/node-resolution-example.png" alt="Resolution Selector example" width="80%">
 
 ### Node badges
 
