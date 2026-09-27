@@ -1,4 +1,4 @@
-🤗 [HuggingFace](https://huggingface.co/Adahm) | <img src="https://avatars.githubusercontent.com/u/117393426?s=60&v=4" height="15%" width="15%"> [CivitAI](https://civitai.com/user/Adahm)
+🤗 [HuggingFace](https://huggingface.co/Adahm) | <img src="https://avatars.githubusercontent.com/u/117393426?s=60&v=4" alt="CivitAI logo" width="20" height="20" align="middle"> [CivitAI](https://civitai.com/user/Adahm)
 
 # ComfyUI-Adahm-Nodes
 
