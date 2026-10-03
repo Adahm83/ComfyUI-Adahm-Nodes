@@ -14,7 +14,7 @@ Created to avoid adding a whole folder of LoRAs one file at a time. It keeps the
 
 Based on the Power LoRA Loader by **rgthree** in [rgthree-comfy](https://github.com/rgthree/rgthree-comfy). This is a separate Adahm node; it does not modify rgthree's original node.
 
-<img src="docs/images/node-lora-folder-loader.png" alt="LoRA Folder Loader example" width="80%">
+<img src="docs/images/node-lora-folder-loader.png" alt="LoRA Folder Loader example" width="50%">
 
 Choose a folder, then load its files together or use **+ Add LoRA** for an individual file. Each row can be switched on or off, reordered, removed, and given its own strength. The node grows and shrinks with the list, so empty space does not need to be resized manually.
 
@@ -30,7 +30,7 @@ Example:
 
 Created to help bring older AUTOMATIC1111 image-generation workflows into ComfyUI. A matching seed alone may not reproduce an older image when the noise generation or sampling schedule is different.
 
-<img src="docs/images/node-legacy-dpmpp_sde.png" alt="Legacy DPM++ SDE example" width="80%">
+<img src="docs/images/node-legacy-dpmpp_sde.png" alt="Legacy DPM++ SDE example" width="30%">
 
 This node combines the legacy SDE noise approach, the older Karras schedule, and an `ensd` seed adjustment in one sampler. The `denoise` control supports both a full first pass and a partial second pass for img2img or an upscale workflow.
 
@@ -117,8 +117,8 @@ Created to make exact node colors easier to enter without switching the browser'
 
 This is an Adahm frontend helper, not a node that needs to be added to the workflow. Right-click any standard ComfyUI node and choose **Set HEX Color...**. Built-in `Note` and `MarkdownNote` nodes and third-party nodes using the normal color properties are supported.
 
-<img src="docs/images/node-hex-menu.png" alt="Node Hex Context Menu" width="80%">
-<img src="docs/images/node-hex-color.png" alt="Node Hex Window" width="80%">
+<img src="docs/images/node-hex-menu.png" alt="Node Hex Context Menu" width="20%">
+<img src="docs/images/node-hex-color.png" alt="Node Hex Window" width="40%">
 
 - Enter separate **Header / Title** and **Body / Background** HEX colors, with color swatches and a preview. Both `#ABC` and `#AABBCC` are accepted.  
 - Enable **Link title/background** to make the body a darker companion to the header, or disable it to choose the two colors independently.  
@@ -130,7 +130,7 @@ This is an Adahm frontend helper, not a node that needs to be added to the workf
 
 The helper uses ComfyUI's node and canvas menu hooks and does not patch core files. Older frontends without these hooks need updating. Custom node renderers and themes can affect the displayed appearance.
 
-<img src="docs/images/node-hex-example.png" alt="Node Hex Example" width="80%">
+<img src="docs/images/node-hex-example.png" alt="Node Hex Example" width="20%">
 
 ## Installation
 
