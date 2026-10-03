@@ -2,8 +2,14 @@
 
 try:
     from .resolution_selector import ResolutionSelectorAdahm
+    from .legacy_dpmpp_sde import LegacyDPMppSDEAdahm
+    from .lora_folder_loader import LoraFolderLoaderAdahm
+    from .text_nodes import JoinStringMultiAdahm, SomethingToStringAdahm
 except ImportError:  # Direct loading by the standalone contract tests.
     from resolution_selector import ResolutionSelectorAdahm
+    from legacy_dpmpp_sde import LegacyDPMppSDEAdahm
+    from lora_folder_loader import LoraFolderLoaderAdahm
+    from text_nodes import JoinStringMultiAdahm, SomethingToStringAdahm
 
 
 class ClearPreviewsOnStart:
@@ -35,14 +41,22 @@ class LegacyClearPreviewsOnStart(ClearPreviewsOnStart):
 
 
 NODE_CLASS_MAPPINGS = {
+    "AdahmJoinStringMulti": JoinStringMultiAdahm,
+    "AdahmSomethingToString": SomethingToStringAdahm,
     "AdahmClearPreviewsOnStart": ClearPreviewsOnStart,
     "ClearPreviewsOnStart": LegacyClearPreviewsOnStart,
     "AdahmResolutionSelector": ResolutionSelectorAdahm,
+    "AdahmLegacyDPMppSDE": LegacyDPMppSDEAdahm,
+    "AdahmLoraFolderLoader": LoraFolderLoaderAdahm,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
+    "AdahmJoinStringMulti": "Adahm Join String Multi",
+    "AdahmSomethingToString": "Adahm Something To String",
     "AdahmClearPreviewsOnStart": "Adahm Clear Previews on Start",
     "ClearPreviewsOnStart": "Adahm Clear Previews on Start",
     "AdahmResolutionSelector": "Adahm Resolution Selector",
+    "AdahmLegacyDPMppSDE": "Adahm Legacy DPM++ SDE",
+    "AdahmLoraFolderLoader": "Adahm LoRA Folder Loader",
 }
 WEB_DIRECTORY = "./web"
 
