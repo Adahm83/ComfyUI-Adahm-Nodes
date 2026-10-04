@@ -4,6 +4,8 @@ All notable changes to this project will be documented here.
 
 ## Unreleased
 
+- Added an isolated Classic/Nodes 1.0 workaround for promoted built-in Preview Image widgets on subgraphs, with multiple previews, aspect-ratio fitting, an Adahm enable setting, and configurable maximum preview height.
+
 - Fixed LoRA Folder Loader height after removing rows or using Clear All.
 
 - Changed the current combined pack's license to GPL-3.0-only, retaining

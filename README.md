@@ -132,6 +132,34 @@ The helper uses ComfyUI's node and canvas menu hooks and does not patch core fil
 
 <img src="docs/images/node-hex-example.png" alt="Node Hex Example" width="20%">
 
+### Classic subgraph image previews
+---
+
+Restores promoted **Preview Image** results on the outer subgraph node in **Classic / legacy Nodes 1.0**. The inspected ComfyUI frontend 1.53.10 exposes these previews in Parameters but skips the legacy subgraph canvas preview. This is an Adahm frontend workaround, not a new workflow node or a core patch. The related upstream report is [ComfyUI_frontend #14597](https://github.com/Comfy-Org/ComfyUI_frontend/issues/14597).
+
+1. Put the normal built-in **Preview Image** node inside a subgraph and connect its `images` input.
+2. Select the outer subgraph and open **Parameters**. Promote the internal Preview Image's `$$canvas-image-preview` into **SHOWN ON NODE**. If it is already there, leave it promoted.
+3. Return to the parent graph and run the workflow. The completed image appears in the outer node's body and updates after subsequent executions.
+
+Settings are under **Adahm → Subgraph Preview**:
+
+- **Show promoted image previews on Classic subgraphs** enables the workaround (on by default).
+- **Maximum image preview height** defaults to 300 graph pixels per promoted preview. Images fit the available width without cropping or stretching.
+
+Multiple promoted previews appear in promotion order; an image batch uses a small grid within that preview's height limit. Nested re-promotions are supported. The widget reserves space through native LiteGraph layout without replacing inputs, outputs, drawing hooks, link visibility, or context menus. It does not change colors and can coexist with the global HEX tools and Clear Previews on Start.
+
+Compatibility limitations:
+
+- Targets completed, file-based results from built-in **Preview Image**, not KSampler live previews, videos, or arbitrary third-party preview widgets.
+- Classic only: it stands aside in Nodes 2.0 and when a native promoted canvas preview widget is detected. No image is drawn when the node itself is collapsed to its title bar.
+- Repeated instances sharing one subgraph definition inherit ComfyUI's current shared output-store behavior: their previews can show the last result for that internal node, rather than an independent image per instance.
+- Missing/changed promotion APIs, absent outputs, and failed image loads leave the normal node intact. Disable this setting if a future frontend adds its own preview renderer without exposing a detectable canvas widget.
+- Nodes may grow to fit previews. Demoting/disabling a preview does not forcibly shrink a manually sized node; resize it normally if you want less empty space.
+
+Verified live on ComfyUI 0.38.0 with frontend 1.53.10: completed-image updates, 512×512 and 512×640 aspect-ratio fitting, resizing, collapse/expand, and coexistence with the HEX color menu. Multiple and nested previews have automated test coverage but still need live verification.
+
+After installation, restart ComfyUI and refresh the browser. Test promotion and demotion, multiple previews, another execution with a changed image, resizing, collapse/expand, selection, links, and the HEX color menu in your own workflow. Automated tests do not replace this live rendering check.
+
 ## Installation
 
 1. Open the ComfyUI `custom_nodes` directory.
@@ -150,9 +178,12 @@ From the repository directory, use the embedded ComfyUI interpreter required by 
 node --test tests/node_id_badge_logic.test.mjs
 node --test tests/text_inputs.test.mjs
 node --test tests/node_colors.test.mjs
+node --test tests/subgraph_previews.test.mjs
 node --check web/text_nodes.js
 node --check web/text_inputs.js
 node --check web/js/node_colors.js
+node --check web/js/subgraph_previews.js
+node --check web/js/subgraph_preview_logic.js
 node --check web/node_id_badges.js
 ```
 
@@ -166,3 +197,4 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for development expectations and [`RELE
 
 This project is licensed under the GNU General Public License v3.0 (GPL-3.0-only). See [LICENSE](LICENSE) for the full terms and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for upstream credits and retained license notices. Original third-party portions retain their applicable notices.  
 
+The original Classic subgraph preview workaround modules and their dedicated tests are separately licensed under [MIT](web/js/subgraph-preview-LICENSE.txt), as marked in their SPDX headers. This exception does not change the license of the rest of the pack or upstream code.
