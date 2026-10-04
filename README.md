@@ -137,11 +137,15 @@ The helper uses ComfyUI's node and canvas menu hooks and does not patch core fil
 
 Restores promoted **Preview Image** results on the outer subgraph node in **Classic / legacy Nodes 1.0**. The inspected ComfyUI frontend 1.53.10 exposes these previews in Parameters but skips the legacy subgraph canvas preview. This is an Adahm frontend workaround, not a new workflow node or a core patch. The related upstream report is [ComfyUI_frontend #14597](https://github.com/Comfy-Org/ComfyUI_frontend/issues/14597).
 
+<img src="docs/images/example_2.png" alt="Subgraph Example" width="60%">
+
 1. Put the normal built-in **Preview Image** node inside a subgraph and connect its `images` input.
 2. Select the outer subgraph and open **Parameters**. Promote the internal Preview Image's `$$canvas-image-preview` into **SHOWN ON NODE**. If it is already there, leave it promoted.
 3. Return to the parent graph and run the workflow. The completed image appears in the outer node's body and updates after subsequent executions.
 
 Settings are under **Adahm → Subgraph Preview**:
+
+<img src="docs/images/example_subgraph-comfy-settings.png" alt="Subgraph Comfy Settings" width="80%">
 
 - **Show promoted image previews on Classic subgraphs** enables the workaround (on by default).
 - **Maximum image preview height** defaults to 300 graph pixels per promoted preview. Images fit the available width without cropping or stretching.
